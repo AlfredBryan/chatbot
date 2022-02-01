@@ -1,6 +1,5 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import AOS from "aos";
+import React from "react";
 
 import "aos/dist/aos.css";
 import Back from "../../assets/back.png";
@@ -11,25 +10,10 @@ import Emoji from "../../assets/emoji.png";
 import Send from "../../assets/send.png";
 import { BaseInput } from "../../components";
 import { Chat } from "../chat";
+import { useChatBox } from "./useChatBox";
+
 const ChatBot = () => {
-  const response = "hello how are you?";
-  const [data, setData] = useState([{ message: "", response }]);
-  const [value, setValue] = useState("");
-
-  useEffect(() => {
-    AOS.init();
-  }, [value]);
-
-  const addMessage = () => {
-    const newMsg = { message: value, response };
-    const newMessage = [...data, newMsg];
-    setData(newMessage);
-    setValue("");
-  };
-
-  const onSubmit = () => {
-    addMessage();
-  };
+  const { data, value, setValue, useOnSubmit } = useChatBox();
 
   return (
     <Flex justify="center">
@@ -112,7 +96,9 @@ const ChatBot = () => {
           </Text>
           <Box h="420px" overflowY="scroll">
             {data?.map((d, i) => (
-              <>{i > 0 && <Chat response={d.response} message={d.message} />}</>
+              <Box key={i}>
+                {i > 0 && <Chat response={d.response} message={d.message} />}
+              </Box>
             ))}
           </Box>
           <Flex ml="-10px" w="100%" justify="center">
@@ -132,7 +118,7 @@ const ChatBot = () => {
                   borderRadius="5px"
                   bg="#78A431"
                   cursor="pointer"
-                  onClick={onSubmit}
+                  onClick={useOnSubmit}
                 >
                   <Image w="12px" h="12px" src={Send} />
                 </Flex>
