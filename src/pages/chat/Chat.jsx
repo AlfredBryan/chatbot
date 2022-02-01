@@ -10,7 +10,7 @@ const Chat = ({ message, response }) => {
       <Flex justify="flex-end">
         <Flex
           mt="12px"
-          bg="#78A431"
+          bg="brand.green"
           justify="flex-end"
           borderRadius="15px 5px 15px 15px"
           p="6px 7px 6px 2px"

@@ -22,7 +22,7 @@ const ChatBot = () => {
         pl="12px"
         pr="12px"
         w={{ sm: "100%", lg: "348px" }}
-        bg="#78A431"
+        bg="brand.green"
       >
         <Flex
           h="30px"
@@ -87,7 +87,7 @@ const ChatBot = () => {
         >
           <Text
             pt="24px"
-            color="#78A431"
+            color="brand.green"
             fontWeight="500"
             m="0"
             fontSize="16px"
@@ -116,7 +116,7 @@ const ChatBot = () => {
                   h="31px"
                   w="31px"
                   borderRadius="5px"
-                  bg="#78A431"
+                  bg="brand.green"
                   cursor="pointer"
                   onClick={useOnSubmit}
                 >
